@@ -1,0 +1,9 @@
+input_texts/
+.vscode/
+
+build/
+cmake-build-*/
+
+slm
+*.exe
+*.out

@@ -1,8 +1,11 @@
 #include <string>
 #include <stdexcept>
+#include <iostream>
+
+#include "GramFrequency.h"
 
 int main(int argc, char* argv[]) {
-    if (argc != 4 || argc != 6) { // ensure we have all input arguments required
+    if (argc != 4 && argc != 6) { // ensure we have all input arguments required
         throw std::invalid_argument(
             "Usage: ./slm [[-a] pseudocount] <word_size> <filename> <output_characters>"
         );
@@ -19,5 +22,7 @@ int main(int argc, char* argv[]) {
     int k = std::stoi(argv[1 + argv_read_offset]);
     std::string filename = argv[2 + argv_read_offset];
     int output_k = std::stoi(argv[3 + argv_read_offset]);
+
+    GramFrequency newGram(k, filename);
 
 }
