@@ -2,24 +2,23 @@
 
 #include <string>
 #include <map>
-#include <vector>
 
-struct WordData {
+struct FrequencyData {
     int count = 0;
     double frequency = 0.0;
+};
+struct ProbabilityData {
+    int count = 0;
+    double cprobability = 0.0;
 };
 
 class GramFrequency {
     public:
-        GramFrequency(int k, std::string filename);
-
-
-        void init_kgram_vector(int k, std::string filename);
-        // void update_frequency_map(std::string word);
+        GramFrequency(int k, std::string filename);        
         void print_frequency_map();
-
     private:
-        std::map<std::string, WordData> frequency_map;
-        std::vector<std::string> kgram_vector;
+        void init_maps(int k, std::string filename);
+        std::map<std::string, FrequencyData> frequency_map;
+        std::map<std::string, std::map<char, ProbabilityData>> next_char_map;
 
 };
