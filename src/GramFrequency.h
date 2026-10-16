@@ -21,6 +21,8 @@ class GramFrequency {
         const std::map<std::string, FrequencyData>& get_frequency_map() const;
         const std::map<std::string, std::map<char, ProbabilityData>>& get_next_char_map() const;
         const std::set<char>& get_alphabet() const;
+        int get_k() const;
+        double get_alpha() const;
 
         // debug print functions
         void print_frequency_map();
@@ -31,5 +33,7 @@ class GramFrequency {
         std::map<std::string, FrequencyData> frequency_map;
         std::map<std::string, std::map<char, ProbabilityData>> next_char_map;
         std::set<char> alphabet;
+        int k;
+        double alpha;
 
 };

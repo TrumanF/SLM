@@ -4,7 +4,7 @@
 #include <iostream>
 #include <stdexcept>
 
-GramFrequency::GramFrequency(int k, std::string filename, double alpha) {
+GramFrequency::GramFrequency(int k, std::string filename, double alpha) : k(k), alpha(alpha){
     init_maps(k, filename);
     calculate_probabilities(alpha);
 }
@@ -86,6 +86,26 @@ void GramFrequency::calculate_probabilities(double alpha) {
             }
         }
     }
+}
+
+const std::map<std::string, FrequencyData>& GramFrequency::get_frequency_map() const {
+    return frequency_map;
+}
+
+const std::map<std::string, std::map<char, ProbabilityData>>& GramFrequency::get_next_char_map() const {
+    return next_char_map;
+}
+
+const std::set<char>& GramFrequency::get_alphabet() const {
+    return alphabet;
+}
+
+int GramFrequency::get_k() const {
+    return k;
+}
+
+double GramFrequency::get_alpha() const {
+    return alpha;
 }
 
 void GramFrequency::print_frequency_map() {

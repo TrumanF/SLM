@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "GramFrequency.h"
+#include "TextGenerator.h"
 
 int main(int argc, char* argv[]) {
     if (argc != 4 && argc != 6) { // ensure we have all input arguments required
@@ -27,5 +28,7 @@ int main(int argc, char* argv[]) {
     int output_k = std::stoi(argv[3 + argv_read_offset]);
 
     GramFrequency newGram(k, filename, alpha);
+    TextGenerator generator(newGram, output_k);
+    std::cout << generator.generate() << std::endl;
 
 }
