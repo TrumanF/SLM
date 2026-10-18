@@ -12,7 +12,7 @@ int main(int argc, char* argv[]) {
         );
     }
     int argv_read_offset;
-    int alpha;
+    double alpha = 0.0;
     if (std::string(argv[1]) == "-a") {
         argv_read_offset = 2;
         alpha = std::stoi(argv[2]);

@@ -3,6 +3,7 @@
 
 #include <stdexcept>
 #include <vector>
+#include <optional>
 
 TextGenerator::TextGenerator(const GramFrequency& model, int output_k) : model(model), output_k(output_k) {}
 
@@ -40,7 +41,7 @@ std::optional<char> TextGenerator::next_char(const std::string& current_gram) {
 
         std::vector<char> chars(alphabet.begin(), alphabet.end());
         std::uniform_int_distribution<int> dist(0, chars.size() - 1);
-        
+
         return chars[dist(gen)];
     }
 
