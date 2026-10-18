@@ -24,9 +24,14 @@ int main(int argc, char* argv[]) {
     }
 
     int k = std::stoi(argv[1 + argv_read_offset]);
+    if (k <= 0) {
+        throw std::invalid_argument("k [word_size] must be a positive integer");
+    }
     std::string filename = argv[2 + argv_read_offset];
     int output_k = std::stoi(argv[3 + argv_read_offset]);
-
+    if (output_k < k) {
+        throw std::invalid_argument("output length must be greater than k [word_size]");
+    }
     GramFrequency newGram(k, filename, alpha);
     TextGenerator generator(newGram, output_k);
     std::cout << generator.generate() << std::endl;

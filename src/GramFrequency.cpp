@@ -50,6 +50,8 @@ void GramFrequency::init_maps(int k, std::string filename) {
             data.frequency =
                 static_cast<double>(data.count) / total_kgrams;
         }
+    } else {
+        throw std::runtime_error("input file must have a least k+1 characters");
     }
 }
 
